@@ -7,18 +7,10 @@ import java.util.Date;
  */
 public class AgentRatioModel {
 
-    public static final String TYPE_PARTNER = "partner";
-    public static final String TYPE_AGENT = "agent";
-
     /**
      *  主键
      */
     private String id;
-
-    /**
-     * 类型 值包含 partner-运营商  agent-代理商
-     */
-    private String type;
 
     /**
      * 行业
@@ -46,14 +38,6 @@ public class AgentRatioModel {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public Integer getCount() {
@@ -92,7 +76,6 @@ public class AgentRatioModel {
     public String toString() {
         return "AgentRatioModel{" +
                 "id='" + id + '\'' +
-                ", type='" + type + '\'' +
                 ", agentName='" + agentName + '\'' +
                 ", count=" + count +
                 ", date='" + date + '\'' +

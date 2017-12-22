@@ -1,8 +1,7 @@
 package cn.com.betasoft.saas.dataprocess.infosystemprocessor.agentratio.job;
 
 import cn.com.betasoft.saas.dataprocess.infosystemprocessor.agentratio.model.AgentRatioModel;
-import cn.com.betasoft.saas.dataprocess.infosystemprocessor.agentratio.processor.PartnerAgentRatioProcessor;
-import cn.com.betasoft.saas.dataprocess.infosystemprocessor.agentratio.processor.RegisterAgentRatioProcessor;
+import cn.com.betasoft.saas.dataprocess.infosystemprocessor.agentratio.processor.AgentRatioProcessor;
 import cn.com.betasoft.saas.dataprocess.infosystemprocessor.agentratio.rowmapper.AgentRatioRowMapper;
 import cn.com.betasoft.saas.dataprocess.infosystemprocessor.listener.InfoSystemJobListener;
 import org.springframework.batch.core.Job;
@@ -22,7 +21,6 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-//@EnableBatchProcessing
 @ComponentScan(basePackageClasses = DefaultBatchConfigurer.class)
 public class AgentRatioJobConfig {
 
@@ -41,19 +39,9 @@ public class AgentRatioJobConfig {
     public JobBuilderFactory jobBuilderFactory;
 
     @Bean
-    public JdbcCursorItemReader<AgentRatioModel> partnerAgentRatioReader() {
+    public JdbcCursorItemReader<AgentRatioModel> agentRatioReader() {
         JdbcCursorItemReader itemReader = new JdbcCursorItemReader();
-        itemReader.setName("partnerAgentRatioReader");
-        itemReader.setDataSource(this.infosystemDataSource);
-        itemReader.setSql("SELECT agentname as agentname,count(*) as count FROM partner_user group by agentname order by count desc;");
-        itemReader.setRowMapper(new AgentRatioRowMapper());
-        return itemReader;
-    }
-
-    @Bean
-    public JdbcCursorItemReader<AgentRatioModel> registerAgentRatioReader() {
-        JdbcCursorItemReader itemReader = new JdbcCursorItemReader();
-        itemReader.setName("registerAgentRatioReader");
+        itemReader.setName("agentRatioReader");
         itemReader.setDataSource(this.infosystemDataSource);
         itemReader.setSql("SELECT agentname as agentname,count(*) as count FROM saas_order_user group by agentname order by count desc;");
         itemReader.setRowMapper(new AgentRatioRowMapper());
@@ -61,13 +49,8 @@ public class AgentRatioJobConfig {
     }
 
     @Bean
-    public RegisterAgentRatioProcessor registerAgentRatioProcessor() {
-        return new RegisterAgentRatioProcessor();
-    }
-
-    @Bean
-    public PartnerAgentRatioProcessor partnerAgentRatioProcessor() {
-        return new PartnerAgentRatioProcessor();
+    public AgentRatioProcessor agentRatioProcessor() {
+        return new AgentRatioProcessor();
     }
 
     @Bean
@@ -80,21 +63,11 @@ public class AgentRatioJobConfig {
     }
 
     @Bean
-    public Step partnerAgentRatioStep() {
-        return stepBuilderFactory.get("partnerAgentRatioStep")
+    public Step agentRatioStep() {
+        return stepBuilderFactory.get("agentRatioStep")
                 .<AgentRatioModel, AgentRatioModel>chunk(10)
-                .reader(partnerAgentRatioReader())
-                .processor(partnerAgentRatioProcessor())
-                .writer(agentRatioWriter())
-                .build();
-    }
-
-    @Bean
-    public Step registerAgentRatioStep() {
-        return stepBuilderFactory.get("registerAgentRatioStep")
-                .<AgentRatioModel, AgentRatioModel>chunk(10)
-                .reader(registerAgentRatioReader())
-                .processor(registerAgentRatioProcessor())
+                .reader(agentRatioReader())
+                .processor(agentRatioProcessor())
                 .writer(agentRatioWriter())
                 .build();
     }
@@ -103,8 +76,7 @@ public class AgentRatioJobConfig {
     public Job agentRatioJob(InfoSystemJobListener listener) {
         return jobBuilderFactory.get("agentRatioJob")
                 .listener(listener)
-                .start(partnerAgentRatioStep())
-                .next(registerAgentRatioStep())
+                .start(agentRatioStep())
                 .build();
     }
 }

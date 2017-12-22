@@ -11,16 +11,15 @@ import java.util.Date;
 import java.util.UUID;
 
 @Component
-public class AllAreaRatioProcessor implements ItemProcessor<AreaRatioModel, AreaRatioModel> {
+public class AreaRatioProcessor implements ItemProcessor<AreaRatioModel, AreaRatioModel> {
 
-    private static final Logger log = LoggerFactory.getLogger(AllAreaRatioProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(AreaRatioProcessor.class);
 
     public AreaRatioModel process(AreaRatioModel provinceRatioModel) throws Exception {
         provinceRatioModel.setId(UUID.randomUUID().toString());
         Date now = new Date();
         provinceRatioModel.setCreateTime(now);
         provinceRatioModel.setDate(DateUtil.formatDate(now,"yyyy-MM-dd"));
-        provinceRatioModel.setType(AreaRatioModel.TYPE_ALL);
         log.info("Converting provinceRatioModel :"+provinceRatioModel);
         return provinceRatioModel;
     }

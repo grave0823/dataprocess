@@ -21,7 +21,6 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-//@EnableBatchProcessing
 @ComponentScan(basePackageClasses = DefaultBatchConfigurer.class)
 public class ItDepartmentRatioJobConfig {
 
@@ -44,12 +43,12 @@ public class ItDepartmentRatioJobConfig {
         JdbcCursorItemReader itemReader = new JdbcCursorItemReader();
         itemReader.setName("itDepartmentRatioReader");
         itemReader.setDataSource(this.infosystemDataSource);
-        StringBuilder sqlStr = new StringBuilder("SELECT itdepartment,sum(count) as count FROM ");
-        sqlStr.append("(SELECT itdepartment,count ");
-        sqlStr.append("FROM (SELECT itmanagedepartment as itdepartment,count(*) as count FROM saas_order_user group by itdepartment order by count desc) as t1 ");
-        sqlStr.append("union all (SELECT itmanagedepartment as itdepartment,count(*) as count FROM partner_user group by itdepartment order by count desc)) as temp ");
-        sqlStr.append("group by itdepartment order by count desc");
-        itemReader.setSql(sqlStr.toString());
+//        StringBuilder sqlStr = new StringBuilder("SELECT itdepartment,sum(count) as count FROM ");
+//        sqlStr.append("(SELECT itdepartment,count ");
+//        sqlStr.append("FROM (SELECT itmanagedepartment as itdepartment,count(*) as count FROM saas_order_user group by itdepartment order by count desc) as t1 ");
+//        sqlStr.append("union all (SELECT itmanagedepartment as itdepartment,count(*) as count FROM partner_user group by itdepartment order by count desc)) as temp ");
+//        sqlStr.append("group by itdepartment order by count desc");
+        itemReader.setSql("SELECT itmanagedepartment as itdepartment,count(*) as count FROM saas_order_user group by itdepartment order by count desc;");
         itemReader.setRowMapper(new ItDepartmentRatioRowMapper());
         return itemReader;
     }

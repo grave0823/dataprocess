@@ -1,7 +1,6 @@
 --行业分布
 CREATE TABLE `infosystem_industryratio` (
   `id` varchar(255) NOT NULL,
-  `type` varchar(20) DEFAULT NULL,
   `industry` varchar(20) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
   `date` varchar(20) DEFAULT NULL,
@@ -12,7 +11,6 @@ CREATE TABLE `infosystem_industryratio` (
 --地域分布
 CREATE TABLE `infosystem_arearatio` (
   `id` varchar(255) NOT NULL,
-  `type` varchar(20) DEFAULT NULL,
   `province` varchar(20) DEFAULT NULL,
   `city` varchar(20) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
@@ -24,7 +22,6 @@ CREATE TABLE `infosystem_arearatio` (
 --代理商、运营商分布
 CREATE TABLE `infosystem_agentratio` (
   `id` varchar(255) NOT NULL,
-  `type` varchar(20) DEFAULT NULL,
   `agentname` varchar(20) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
   `date` varchar(20) DEFAULT NULL,

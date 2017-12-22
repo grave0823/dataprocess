@@ -11,16 +11,15 @@ import java.util.Date;
 import java.util.UUID;
 
 @Component
-public class PartnerAgentRatioProcessor implements ItemProcessor<AgentRatioModel, AgentRatioModel> {
+public class AgentRatioProcessor implements ItemProcessor<AgentRatioModel, AgentRatioModel> {
 
-    private static final Logger log = LoggerFactory.getLogger(PartnerAgentRatioProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(AgentRatioProcessor.class);
 
     public AgentRatioModel process(AgentRatioModel agentRatioModel) throws Exception {
         agentRatioModel.setId(UUID.randomUUID().toString());
         Date now = new Date();
         agentRatioModel.setCreateTime(now);
         agentRatioModel.setDate(DateUtil.formatDate(now,"yyyy-MM-dd"));
-        agentRatioModel.setType(AgentRatioModel.TYPE_PARTNER);
         log.info("Converting agentRatioModel :"+agentRatioModel);
         return agentRatioModel;
     }

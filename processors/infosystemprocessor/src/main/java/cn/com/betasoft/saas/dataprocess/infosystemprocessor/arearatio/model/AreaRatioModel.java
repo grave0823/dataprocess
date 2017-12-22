@@ -7,19 +7,10 @@ import java.util.Date;
  */
 public class AreaRatioModel {
 
-    public static final String TYPE_PARTNER = "partner";
-    public static final String TYPE_REGISTER = "register";
-    public static final String TYPE_ALL = "all";
-
     /**
      *  主键
      */
     private String id;
-
-    /**
-     * 类型 值包含 partner-运营商  agent-注册用户  all-所有类型用户
-     */
-    private String type;
 
     /**
      * 省
@@ -52,14 +43,6 @@ public class AreaRatioModel {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getProvince() {
@@ -106,7 +89,6 @@ public class AreaRatioModel {
     public String toString() {
         return "ProvinceRatioModel{" +
                 "id='" + id + '\'' +
-                ", type='" + type + '\'' +
                 ", province='" + province + '\'' +
                 ", city='" + city + '\'' +
                 ", count=" + count +
