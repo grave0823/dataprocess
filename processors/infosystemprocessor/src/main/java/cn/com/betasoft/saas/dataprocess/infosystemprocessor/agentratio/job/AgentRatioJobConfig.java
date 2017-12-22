@@ -57,7 +57,7 @@ public class AgentRatioJobConfig {
     public JdbcBatchItemWriter<AgentRatioModel> agentRatioWriter() {
         JdbcBatchItemWriter<AgentRatioModel> writer = new JdbcBatchItemWriter<AgentRatioModel>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<AgentRatioModel>());
-        writer.setSql("INSERT INTO infosystem_agentratio (id, type, agentname, count,date,createTime) VALUES (:id, :type, :agentName, :count,:date,:createTime);");
+        writer.setSql("INSERT INTO infosystem_agentratio (id, agentname, count,date,createTime) VALUES (:id, :agentName, :count,:date,:createTime);");
         writer.setDataSource(mysqlDataSource);
         return writer;
     }

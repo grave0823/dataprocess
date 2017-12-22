@@ -57,7 +57,7 @@ public class IndustryRatioJobConfig {
     public JdbcBatchItemWriter<IndustryRatioModel> industryRatioWriter() {
         JdbcBatchItemWriter<IndustryRatioModel> writer = new JdbcBatchItemWriter<IndustryRatioModel>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<IndustryRatioModel>());
-        writer.setSql("INSERT INTO infosystem_industryratio (id, type, industry, count,date,createTime) VALUES (:id, :type, :industry, :count,:date,:createTime);");
+        writer.setSql("INSERT INTO infosystem_industryratio (id, industry, count,date,createTime) VALUES (:id, :industry, :count,:date,:createTime);");
         writer.setDataSource(mysqlDataSource);
         return writer;
     }

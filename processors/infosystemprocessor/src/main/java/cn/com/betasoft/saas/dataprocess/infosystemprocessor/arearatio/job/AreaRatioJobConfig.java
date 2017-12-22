@@ -57,7 +57,7 @@ public class AreaRatioJobConfig {
     public JdbcBatchItemWriter<AreaRatioModel> areaRatioWriter() {
         JdbcBatchItemWriter<AreaRatioModel> writer = new JdbcBatchItemWriter<AreaRatioModel>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<AreaRatioModel>());
-        writer.setSql("INSERT INTO infosystem_arearatio (id, type, province,city, count,date,createTime) VALUES (:id, :type, :province,:city, :count,:date,:createTime);");
+        writer.setSql("INSERT INTO infosystem_arearatio (id, province,city, count,date,createTime) VALUES (:id, :province,:city, :count,:date,:createTime);");
         writer.setDataSource(mysqlDataSource);
         return writer;
     }

@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class MainJobApplication {
 
     public static void main(String[] args) {
