@@ -51,3 +51,13 @@ CREATE TABLE `infosystem_producttyperatio` (
   `createtime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--网站提交问题模块分布
+CREATE TABLE `mainweb_workorderratio` (
+  `id` varchar(255) NOT NULL,
+  `modulename` varchar(20) DEFAULT NULL,
+  `count` int(11) DEFAULT NULL,
+  `date` varchar(20) DEFAULT NULL,
+  `createtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
