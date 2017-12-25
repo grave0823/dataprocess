@@ -49,6 +49,15 @@ CREATE TABLE `infosystem_producttyperatio` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--注册用户总数
+CREATE TABLE `infosystem_registercount` (
+  `id` varchar(255) NOT NULL,
+  `count` int(11) DEFAULT NULL,
+  `date` varchar(20) DEFAULT NULL,
+  `createtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --网站提交问题模块分布
 CREATE TABLE `mainweb_workorderratio` (
   `id` varchar(255) NOT NULL,

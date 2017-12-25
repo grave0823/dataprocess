@@ -35,7 +35,7 @@ public class AreaRatioModel {
     /**
      * 数据生成时间  日期格式
      */
-    private Date createTime;
+    private Date createTime = new Date();
 
     public String getId() {
         return id;

@@ -1,5 +1,6 @@
 package cn.com.betasoft.saas.dataprocess.scheduled;
 
+import cn.com.betasoft.saas.dataprocess.baselib.parameters.SaaSJobParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
@@ -27,11 +28,16 @@ public class ScheduledJob {
     @Autowired
     private List<Job> jobs;
 
+    @Autowired
+    private List<SaaSJobParameters> saaSJobParametersList;
+
     @Scheduled(cron="0 * * * * ?")
     public void executeDailyJob() {
-        Thread current = Thread.currentThread();
-        System.out.println("定时任务1:"+current.getId());
-        logger.info("ScheduledTest.executeFileDownLoadTask 定时任务1:"+current.getId()+ ",name:"+current.getName());
+//        Thread current = Thread.currentThread();
+//        System.out.println("定时任务1:"+current.getId());
+//        logger.info("ScheduledTest.executeFileDownLoadTask 定时任务1:"+current.getId()+ ",name:"+current.getName());
+
+        initSaaSJobParameters();
 
         JobParameters jobParameters =
                 new JobParametersBuilder()
@@ -48,6 +54,12 @@ public class ScheduledJob {
             } catch (JobParametersInvalidException e) {
                 logger.error("JobParametersInvalidException",e);
             }
+        }
+    }
+
+    private void initSaaSJobParameters(){
+        for(SaaSJobParameters saaSJobParameters : saaSJobParametersList){
+            saaSJobParameters.init();
         }
     }
 }

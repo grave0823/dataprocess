@@ -1,24 +1,20 @@
-package cn.com.betasoft.saas.dataprocess.infosystemprocessor.itdepartmentratio.model;
+package cn.com.betasoft.saas.dataprocess.infosystemprocessor.registercount.model;
 
 import java.util.Date;
 
 /**
- * IT隶属部门分布
+ * 注册用户总数
  */
-public class ItDepartmentRatioModel {
+public class RegisterCountModel {
 
     /**
      *  主键
      */
     private String id;
 
-    /**
-     * IT隶属部门
-     */
-    private String itDepartment;
 
     /**
-     * 各代IT隶属部门对应数量
+     * 数量
      */
     private Integer count;
 
@@ -48,14 +44,6 @@ public class ItDepartmentRatioModel {
         this.count = count;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     public String getDate() {
         return date;
     }
@@ -64,19 +52,18 @@ public class ItDepartmentRatioModel {
         this.date = date;
     }
 
-    public String getItDepartment() {
-        return itDepartment;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setItDepartment(String itDepartment) {
-        this.itDepartment = itDepartment;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     @Override
     public String toString() {
-        return "ItDepartmentRatioModel{" +
+        return "RegisterCountModel{" +
                 "id='" + id + '\'' +
-                ", itDepartment='" + itDepartment + '\'' +
                 ", count=" + count +
                 ", date='" + date + '\'' +
                 ", createTime=" + createTime +
