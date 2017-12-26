@@ -17,7 +17,8 @@ public class DefaultSaaSJobParameters implements SaaSJobParameters {
     @Override
     public void init() {
         parameters = new HashMap<>();
-        parameters.put(SaaSJobParameters.KEY_PROCESS_DATE_STR, DateUtil.formatDate(new Date(),"yyyy-MM-dd"));
+        Date yesterday = DateUtil.adjDataByDay(null,-1);
+        parameters.put(SaaSJobParameters.KEY_PROCESS_DATE_STR, DateUtil.formatDate(yesterday,"yyyy-MM-dd"));
     }
 
     @Override

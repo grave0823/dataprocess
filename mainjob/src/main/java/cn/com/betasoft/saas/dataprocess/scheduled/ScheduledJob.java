@@ -31,7 +31,7 @@ public class ScheduledJob {
     @Autowired
     private List<SaaSJobParameters> saaSJobParametersList;
 
-    @Scheduled(cron="0 * * * * ?")
+    @Scheduled(cron="0 5 0 * * ?")
     public void executeDailyJob() {
 //        Thread current = Thread.currentThread();
 //        System.out.println("定时任务1:"+current.getId());
