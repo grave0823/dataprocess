@@ -22,7 +22,7 @@ CREATE TABLE `infosystem_arearatio` (
 --代理商、运营商分布
 CREATE TABLE `infosystem_agentratio` (
   `id` varchar(255) NOT NULL,
-  `agentname` varchar(20) DEFAULT NULL,
+  `agentname` varchar(100) DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
   `date` varchar(20) DEFAULT NULL,
   `createtime` datetime DEFAULT NULL,
