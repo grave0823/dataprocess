@@ -33,9 +33,6 @@ public class ScheduledJob {
 
     @Scheduled(cron="0 5 0 * * ?")
     public void executeDailyJob() {
-//        Thread current = Thread.currentThread();
-//        System.out.println("定时任务1:"+current.getId());
-//        logger.info("ScheduledTest.executeFileDownLoadTask 定时任务1:"+current.getId()+ ",name:"+current.getName());
 
         initSaaSJobParameters();
 
